@@ -15,7 +15,7 @@ export class AuthenticationController {
   @Inject()
   authenticationService: AuthenticationService;
 
-  @Post('jwt/login')
+  @Post()
   async authorization(req: RequestInterface, res: Response) {
     if (req.cookies.token) {
       const verifiedToken = this.authenticationService.verifyToken(

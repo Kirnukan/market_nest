@@ -22,6 +22,7 @@ export class BrandsController {
     throw new HttpException('Have not id', HttpStatus.BAD_REQUEST);
   }
 
+  @Get()
   async getBrands(): Promise<BrandsEntity[]> {
     return this.brandsService.findAll();
   }
