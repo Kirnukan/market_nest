@@ -1,14 +1,15 @@
 import { AuthenticationService } from './authentication.service';
 import {
   Controller,
-  Get,
   Inject,
   HttpException,
   HttpStatus,
   Post,
+  Body,
+  Req,
+  Res
 } from '@nestjs/common';
-import { RequestInterface } from './interfaces/request.interface';
-import { Response } from 'express';
+import { AuthorizationDto } from './dto/authorization.dto';
 
 @Controller('authentication')
 export class AuthenticationController {
@@ -16,7 +17,9 @@ export class AuthenticationController {
   authenticationService: AuthenticationService;
 
   @Post()
-  async authorization(req: RequestInterface, res: Response) {
+  async authorization(@Body() authorizationDto: AuthorizationDto,
+                      @Req() req,
+                      @Res() res) {
     if (req.cookies.token) {
       const verifiedToken = this.authenticationService.verifyToken(
         req.cookies.token,
@@ -26,10 +29,7 @@ export class AuthenticationController {
       }
     }
 
-    const decodedUserData = await this.authenticationService.authenticator(
-      req.body.email,
-      req.body.password,
-    );
+    const decodedUserData = await this.authenticationService.authenticator(authorizationDto);
     if (res) {
       res.cookie('value', decodedUserData.authenticatedToken);
       res.send('Succes log in');

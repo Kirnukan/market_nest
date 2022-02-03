@@ -6,6 +6,7 @@ import bcrypt from 'bcrypt';
 import { ConfigService } from '@nestjs/config';
 import jwt from 'jsonwebtoken';
 import { UserTokenInterface } from './interfaces/userToken.interface';
+import { AuthorizationDto } from './dto/authorization.dto';
 
 @Injectable()
 export class AuthenticationService {
@@ -35,15 +36,15 @@ export class AuthenticationService {
     }
   }
 
-  async authenticator(email: string, password: string) {
+  async authenticator(dto: AuthorizationDto) {
     const userExistence = await this.usersRepository.findOne({
-      where: { email },
+      where: { email: dto.email },
     });
 
     if (!userExistence) {
       throw new HttpException("Wrong user's data", HttpStatus.UNAUTHORIZED);
     } else {
-      const verifyPassword = bcrypt.compare(password, userExistence.password);
+      const verifyPassword = bcrypt.compare(dto.password, userExistence.password);
 
       if (!verifyPassword) {
         throw new HttpException("Wrong user's data", HttpStatus.UNAUTHORIZED);

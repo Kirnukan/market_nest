@@ -6,8 +6,10 @@ import {
   Inject,
   HttpException,
   HttpStatus,
+  UseGuards
 } from '@nestjs/common';
 import { OrdersEntity } from './order.entity';
+import { ParamsIdGuard } from 'src/guards/paramsId.guard';
 
 @Controller('orders')
 export class OrdersController {
@@ -15,6 +17,7 @@ export class OrdersController {
   ordersService: OrderService;
 
   @Get(':id')
+  @UseGuards(ParamsIdGuard)
   async getOrder(@Param() params): Promise<OrdersEntity> {
     if (+params.id) {
       return this.ordersService.findOne(+params.id);

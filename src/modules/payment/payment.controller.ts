@@ -6,8 +6,10 @@ import {
   Inject,
   HttpException,
   HttpStatus,
+  UseGuards
 } from '@nestjs/common';
 import { PaymentsEntity } from './payment.entity';
+import { ParamsIdGuard } from 'src/guards/paramsId.guard';
 
 @Controller('payments')
 export class PaymentsController {
@@ -15,6 +17,7 @@ export class PaymentsController {
   paymentsService: PaymentService;
 
   @Get(':id')
+  @UseGuards(ParamsIdGuard)
   async getPayment(@Param() params): Promise<PaymentsEntity> {
     if (+params.id) {
       return this.paymentsService.findOne(+params.id);

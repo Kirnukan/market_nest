@@ -6,8 +6,10 @@ import {
   Inject,
   HttpException,
   HttpStatus,
+  UseGuards
 } from '@nestjs/common';
 import { AttachmentsEntity } from './attachment.entity';
+import { ParamsIdGuard } from 'src/guards/paramsId.guard';
 
 @Controller('attachments')
 export class AttachmentsController {
@@ -15,6 +17,7 @@ export class AttachmentsController {
   attachmentsService: AttachmentService;
 
   @Get(':id')
+  @UseGuards(ParamsIdGuard)
   async getAttachment(@Param() params): Promise<AttachmentsEntity> {
     if (+params.id) {
       return this.attachmentsService.findOne(+params.id);

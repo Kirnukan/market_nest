@@ -6,8 +6,10 @@ import {
   Inject,
   HttpException,
   HttpStatus,
+  UseGuards
 } from '@nestjs/common';
 import { CategoriesEntity } from './category.entity';
+import { ParamsIdGuard } from 'src/guards/paramsId.guard';
 
 @Controller('categories')
 export class CategoriesController {
@@ -15,6 +17,7 @@ export class CategoriesController {
   categoriesService: CategoryService;
 
   @Get(':id')
+  @UseGuards(ParamsIdGuard)
   async getCategory(@Param() params): Promise<CategoriesEntity> {
     if (+params.id) {
       return this.categoriesService.findOne(+params.id);
