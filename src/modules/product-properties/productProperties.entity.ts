@@ -8,7 +8,6 @@ import {
 } from 'typeorm';
 import { ProductsEntity } from '../product/product.entity';
 import { PropertiesEntity } from '../property/property.entity';
-import { IsInt } from 'class-validator';
 
 @Entity('products_properties')
 export class ProductsPropertiesEntity extends BaseEntity {
@@ -17,7 +16,7 @@ export class ProductsPropertiesEntity extends BaseEntity {
 
   @OneToOne(() => ProductsEntity)
   @JoinColumn()
-  @IsInt()
+
   @Column({
     type: 'numeric',
     nullable: false,
@@ -26,14 +25,14 @@ export class ProductsPropertiesEntity extends BaseEntity {
 
   @OneToOne(() => PropertiesEntity)
   @JoinColumn()
-  @IsInt()
+
   @Column({
     type: 'numeric',
     nullable: false,
   })
   propertyId!: number;
 
-  @IsInt()
+
   @Column({
     type: 'numeric',
     nullable: false,

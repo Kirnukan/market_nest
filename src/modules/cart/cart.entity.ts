@@ -10,7 +10,6 @@ import {
 } from 'typeorm';
 import { OrdersEntity } from '../order/order.entity';
 import { ProductsEntity } from '../product/product.entity';
-import { IsInt } from 'class-validator';
 
 @Entity('carts')
 export class CartsEntity extends BaseEntity {
@@ -19,7 +18,7 @@ export class CartsEntity extends BaseEntity {
 
   @OneToOne(() => OrdersEntity)
   @JoinColumn()
-  @IsInt()
+
   @Column({
     type: 'numeric',
     nullable: false,
@@ -38,14 +37,14 @@ export class CartsEntity extends BaseEntity {
       referencedColumnName: 'id',
     },
   })
-  @IsInt()
+
   @Column({
     type: 'numeric',
     nullable: false,
   })
   productId!: number;
 
-  @IsInt()
+
   @Column({
     type: 'numeric',
     nullable: false,

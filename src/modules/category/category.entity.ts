@@ -5,7 +5,7 @@ import {
   PrimaryGeneratedColumn,
   BaseEntity,
 } from 'typeorm';
-import { IsInt, Length } from 'class-validator';
+import { Length } from 'class-validator';
 
 @Entity('categories')
 export class CategoriesEntity extends BaseEntity {
@@ -19,7 +19,7 @@ export class CategoriesEntity extends BaseEntity {
   })
   caption!: string;
 
-  @IsInt()
+
   @Column({
     type: 'numeric',
     nullable: false,
@@ -27,7 +27,7 @@ export class CategoriesEntity extends BaseEntity {
   rank!: number;
 
   @ManyToOne(() => CategoriesEntity)
-  @IsInt()
+
   @Column({
     type: 'numeric',
     nullable: true,

@@ -24,7 +24,7 @@ export class ProductsEntity extends BaseEntity {
   })
   name!: string;
 
-  @IsInt()
+
   @Column({
     type: 'numeric',
     nullable: false,
@@ -46,7 +46,7 @@ export class ProductsEntity extends BaseEntity {
   })
   description!: string;
 
-  @IsInt()
+
   @Column({
     type: 'numeric',
     nullable: false,
@@ -55,7 +55,7 @@ export class ProductsEntity extends BaseEntity {
 
   @ManyToOne(() => CategoriesEntity)
   @JoinTable()
-  @IsInt()
+
   @Column({
     type: 'numeric',
     nullable: false,
@@ -64,7 +64,7 @@ export class ProductsEntity extends BaseEntity {
 
   @ManyToOne(() => CurrenciesEntity)
   @JoinColumn()
-  @IsInt()
+
   @Column({
     type: 'numeric',
     nullable: false,
@@ -73,7 +73,7 @@ export class ProductsEntity extends BaseEntity {
 
   @ManyToOne(() => BrandsEntity)
   @JoinColumn()
-  @IsInt()
+
   @Column({
     type: 'numeric',
     nullable: true,

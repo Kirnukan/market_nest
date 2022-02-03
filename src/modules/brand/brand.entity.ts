@@ -7,7 +7,7 @@ import {
   JoinColumn,
 } from 'typeorm';
 import { AttachmentsEntity } from '../attachment/attachment.entity';
-import { IsInt, Length } from 'class-validator';
+import { Length } from 'class-validator';
 
 @Entity('brands')
 export class BrandsEntity extends BaseEntity {
@@ -22,7 +22,7 @@ export class BrandsEntity extends BaseEntity {
   caption!: string;
 
   @OneToOne(() => AttachmentsEntity)
-  @IsInt()
+
   @JoinColumn()
   @Column({
     type: 'numeric',

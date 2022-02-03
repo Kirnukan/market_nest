@@ -7,7 +7,7 @@ import {
   JoinColumn,
 } from 'typeorm';
 import { CustomersEntity } from '../customer/customer.entity';
-import { IsInt, IsDate } from 'class-validator';
+import {  IsDate } from 'class-validator';
 
 export enum orderStatus {
   PREPARING = 'PREPARING',
@@ -22,7 +22,7 @@ export class OrdersEntity extends BaseEntity {
 
   @OneToOne(() => CustomersEntity)
   @JoinColumn()
-  @IsInt()
+
   @Column({
     type: 'numeric',
     nullable: false,

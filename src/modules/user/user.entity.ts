@@ -1,5 +1,5 @@
 import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
-import { IsInt, Length, IsEmail, IsPhoneNumber } from 'class-validator';
+import {  Length, IsEmail, IsPhoneNumber } from 'class-validator';
 
 @Entity('users')
 export class UsersEntity extends BaseEntity {
@@ -16,7 +16,7 @@ export class UsersEntity extends BaseEntity {
   email!: string;
 
   @IsPhoneNumber()
-  @IsInt()
+
   @Column({
     type: 'numeric',
     nullable: false,

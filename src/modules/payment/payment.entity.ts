@@ -7,7 +7,7 @@ import {
   JoinColumn,
 } from 'typeorm';
 import { OrdersEntity } from '../order/order.entity';
-import { IsInt, Length } from 'class-validator';
+import { Length } from 'class-validator';
 
 @Entity('payments')
 export class PaymentsEntity extends BaseEntity {
@@ -16,7 +16,7 @@ export class PaymentsEntity extends BaseEntity {
 
   @OneToOne(() => OrdersEntity)
   @JoinColumn()
-  @IsInt()
+
   @Column({
     type: 'numeric',
     nullable: false,
