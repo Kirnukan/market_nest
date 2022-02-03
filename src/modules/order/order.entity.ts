@@ -5,9 +5,10 @@ import {
   PrimaryGeneratedColumn,
   BaseEntity,
   JoinColumn,
+  UpdateDateColumn,
+  CreateDateColumn
 } from 'typeorm';
 import { CustomersEntity } from '../customer/customer.entity';
-import {  IsDate } from 'class-validator';
 
 export enum orderStatus {
   PREPARING = 'PREPARING',
@@ -36,14 +37,14 @@ export class OrdersEntity extends BaseEntity {
   })
   status!: orderStatus;
 
-  @IsDate()
+  @CreateDateColumn()
   @Column({
     type: 'timestamp',
     nullable: false,
   })
   createdAt!: string;
 
-  @IsDate()
+  @UpdateDateColumn()
   @Column({
     type: 'timestamp',
     nullable: false,
