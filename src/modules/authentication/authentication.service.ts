@@ -1,4 +1,4 @@
-import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
+import { HttpException, HttpStatus, Injectable, Inject } from '@nestjs/common';
 import { UsersEntity } from '../user/user.entity';
 import { Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
@@ -9,10 +9,12 @@ import { UserTokenInterface } from './interfaces/userToken.interface';
 
 @Injectable()
 export class AuthenticationService {
+  @Inject()
+  configService: ConfigService;
+
   constructor(
     @InjectRepository(UsersEntity)
     private readonly usersRepository: Repository<UsersEntity>,
-    private readonly configService: ConfigService
   ) {}
 
   newToken(payload: UserTokenInterface) {
