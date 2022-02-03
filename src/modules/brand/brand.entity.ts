@@ -7,14 +7,13 @@ import {
   JoinColumn,
 } from 'typeorm';
 import { AttachmentsEntity } from '../attachment/attachment.entity';
-import { Length } from 'class-validator';
+
 
 @Entity('brands')
 export class BrandsEntity extends BaseEntity {
   @PrimaryGeneratedColumn()
   id!: number;
 
-  @Length(5, 132)
   @Column({
     type: 'varchar',
     nullable: false,

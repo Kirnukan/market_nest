@@ -10,14 +10,12 @@ import {
 import { BrandsEntity } from '../brand/brand.entity';
 import { CategoriesEntity } from '../category/category.entity';
 import { CurrenciesEntity } from '../currency/currency.entity';
-import { IsInt, Length } from 'class-validator';
 
 @Entity('products')
 export class ProductsEntity extends BaseEntity {
   @PrimaryGeneratedColumn()
   id!: number;
 
-  @Length(1, 100)
   @Column({
     type: 'varchar',
     nullable: false,
@@ -30,16 +28,14 @@ export class ProductsEntity extends BaseEntity {
     nullable: false,
     default: 0,
   })
-  availableAmount!: number | null;
+  availableAmount!: number;
 
-  @Length(1, 128)
   @Column({
     type: 'varchar',
     nullable: false,
   })
   caption!: string;
 
-  @Length(1, 255)
   @Column({
     type: 'varchar',
     nullable: false,
@@ -55,7 +51,6 @@ export class ProductsEntity extends BaseEntity {
 
   @ManyToOne(() => CategoriesEntity)
   @JoinTable()
-
   @Column({
     type: 'numeric',
     nullable: false,
@@ -64,7 +59,6 @@ export class ProductsEntity extends BaseEntity {
 
   @ManyToOne(() => CurrenciesEntity)
   @JoinColumn()
-
   @Column({
     type: 'numeric',
     nullable: false,
@@ -73,7 +67,6 @@ export class ProductsEntity extends BaseEntity {
 
   @ManyToOne(() => BrandsEntity)
   @JoinColumn()
-
   @Column({
     type: 'numeric',
     nullable: true,

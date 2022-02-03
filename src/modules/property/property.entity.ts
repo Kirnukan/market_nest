@@ -1,5 +1,5 @@
 import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
-import { Length } from 'class-validator';
+
 
 export enum propType {
   TEXT = 'TEXT',
@@ -13,7 +13,6 @@ export class PropertiesEntity extends BaseEntity {
   @PrimaryGeneratedColumn()
   id!: number;
 
-  @Length(1, 124)
   @Column({
     type: 'varchar',
     nullable: false,
