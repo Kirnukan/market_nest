@@ -11,8 +11,7 @@ export class CartService {
   ) {}
 
   async findAll() {
-    const result = await this.cartRepository.find();
-    return result;
+     return await this.cartRepository.find();
   }
 
   async findOne(id: number) {

@@ -11,7 +11,7 @@ export class AttachmentService {
   ) {}
 
   async findAll() {
-    return this.attachmentsRepository.find();
+    return await this.attachmentsRepository.find();
   }
 
   async findOne(id: number) {

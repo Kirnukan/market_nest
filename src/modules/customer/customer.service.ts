@@ -11,8 +11,7 @@ export class CustomerService {
   ) {}
 
   async findAll() {
-    const result = await this.customerRepository.find();
-    return result;
+     return await this.customerRepository.find();
   }
 
   async findOne(id: number) {

@@ -11,8 +11,7 @@ export class ProductImagesService {
   ) {}
 
   async findAll() {
-    const result = await this.productImageRepository.find();
-    return result;
+     return await this.productImageRepository.find();
   }
 
   async findOne(id: number) {

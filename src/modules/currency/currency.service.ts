@@ -11,8 +11,7 @@ export class CurrencyService {
   ) {}
 
   async findAll() {
-    const result = await this.currencyRepository.find();
-    return result;
+    return await this.currencyRepository.find();
   }
 
   async findOne(id: number) {

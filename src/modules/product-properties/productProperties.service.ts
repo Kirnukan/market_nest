@@ -11,8 +11,7 @@ export class ProductPropertiesService {
   ) {}
 
   async findAll() {
-    const result = await this.productsPropertiesRepository.find();
-    return result;
+     return await this.productsPropertiesRepository.find();
   }
 
   async findOne(id: number) {

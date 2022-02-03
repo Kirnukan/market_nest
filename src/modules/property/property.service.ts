@@ -16,8 +16,7 @@ export class PropertyService {
   ) {}
 
   async findAll() {
-    const result = await this.propertyRepository.find();
-    return result;
+     return await this.propertyRepository.find();
   }
 
   async findOne(id: number) {

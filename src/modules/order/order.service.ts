@@ -11,8 +11,7 @@ export class OrderService {
   ) {}
 
   async findAll() {
-    const result = await this.orderRepository.find();
-    return result;
+     return await this.orderRepository.find();
   }
 
   async findOne(id: number) {

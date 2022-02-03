@@ -11,8 +11,7 @@ export class CategoryService {
   ) {}
 
   async findAll() {
-    const result = await this.categoryRepository.find();
-    return result;
+    return await this.categoryRepository.find();
   }
 
   async findOne(id: number) {

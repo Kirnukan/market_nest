@@ -11,8 +11,7 @@ export class PaymentService {
   ) {}
 
   async findAll() {
-    const result = await this.paymentRepository.find();
-    return result;
+     return await this.paymentRepository.find();
   }
 
   async findOne(id: number) {
